@@ -1,20 +1,14 @@
-// 給定 n（1<=n<=30），依照規律印出正確圖形
+/* 
+給定 n（1<=n<=30），依照規律「印出」正確圖形
+printStars(1)
+正確輸出：
+>>>> *
+*/
 
-function printStars(n) {
-    if ( 1<= n && n<=30 ){
-        var i = 1
-        while (i < n+1){
-            var m = 1
-            console.log('n = ', i)
-            while (m < i+1){
-                console.log('*')
-                m++
-            };
-            console.log(' ')
-            i++
-        }
+function printStars(n){
+    for (var i = 1; i <= n; i++){
+        console.log('*')
     }
-        // console.log('final count:', i)
 }
 
-// printStars(0)
+// printStars(2)

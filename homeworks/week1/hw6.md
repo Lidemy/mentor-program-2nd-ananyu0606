@@ -2,10 +2,10 @@
 
 ### 前端：
 由client端執行的操作，包括瀏覽網頁資料、對server提出request、對server輸入資訊、對client輸入的資料格式做初步驗證（例如輸入字元數目是否正確等）。
-### 後段：
+### 後端：
 由server端執行的操作，根據client端提出的request提供回應，例如密碼驗證、搜尋資料庫、資料庫更新、金流交易等等。
 
-## 假設我今天去 Google 首頁搜尋框打上：JavaScrit 並且按下 Enter，請說出從這一刻開始到我看到搜尋結果為止發生在背後的事情。
+## 假設我今天去 Google 首頁搜尋框打上：JavaScript 並且按下 Enter，請說出從這一刻開始到我看到搜尋結果為止發生在背後的事情。
 
 1.  client端：對google送出關鍵字「JavaScript」
 2.  server端：google搜尋引擎從google資料庫中篩選出符合「JavaScript」的網頁
