@@ -5,8 +5,8 @@
 
 function stars(n) {
     var arr = []
-    for (var i = 1; i <= n; i++){
-        arr.push( '*'.repeat(i))
+    for (var i = 1; i <= n; i++) {
+        arr.push('*'.repeat(i))
     }
     return arr
 }

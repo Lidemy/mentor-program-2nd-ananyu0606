@@ -5,12 +5,12 @@ output: ,HeLLo123
 */
 
 function alphaSwap(str) {
-    var reverse = '' 
-    for (var i = 0; i < str.length; i++){
-        if (str[i] >= 'A' && str[i] <= 'Z'){
-           reverse += str[i].toLowerCase()
-        }else{           
-           reverse += str[i].toUpperCase()
+    var reverse = ''
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] >= 'A' && str[i] <= 'Z') {
+            reverse += str[i].toLowerCase()
+        } else {
+            reverse += str[i].toUpperCase()
         }
     }
     return reverse

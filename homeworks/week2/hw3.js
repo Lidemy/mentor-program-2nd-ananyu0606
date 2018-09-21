@@ -28,4 +28,4 @@ module.exports = isPrime
 // console.log(isPrime(3))
 // console.log(isPrime(8))
 // console.log(isPrime(38))
-console.log(isPrime(1))
+// console.log(isPrime(1))

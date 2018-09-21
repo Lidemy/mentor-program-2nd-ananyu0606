@@ -9,22 +9,22 @@ applppa => true
 
 function isPalindromes(str) {
     var m = 0
-    for(var i = 0 ; i < str.length ; i++){
-        if(str[i] !== str[str.length-1-i]){  //在依序檢查的程序中，只要檢查到兩個不一樣的字母就回傳false並終止for loop
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] !== str[str.length - 1 - i]) {  //在依序檢查的程序中，只要檢查到兩個不一樣的字母就回傳false並終止for loop
             // console.log(str[i], str[str.length-1-i]) 檢查不相同的字母是哪兩個
             return false
             break;
-        }else{
-            m+=1
-        } 
+        } else {
+            m += 1
+        }
     }
-    if(m == str.length){
+    if (m == str.length) {
         return true
     }
 }
 
 module.exports = isPalindromes
 
-console.log('applppa:',isPalindromes('applppa'))
-console.log('apple:', isPalindromes('apple'))
+// console.log('applppa:', isPalindromes('applppa'))
+// console.log('apple:', isPalindromes('apple'))
 
