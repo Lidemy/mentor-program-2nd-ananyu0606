@@ -1,7 +1,7 @@
 {
   "name": "mentor-program-2nd",
   "version": "1.0.0",
-  "description": "",
+  "description": "[程式導師實驗計畫第二期](https://medium.com/hulis-blog/mentor-program-s2-f876c4e13d3b)是一個為期四個月的計畫，要求學生全程參與（每週至少付出四十小時），希望能在結業時培養出合格的（意思就是找得到工作）的工程師。",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -12,7 +12,17 @@
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.6",
     "babel-preset-es2015": "^6.24.1",
-    "jest": "^22.0.6",
     "regenerator-runtime": "^0.11.1"
-  }
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lidemy/mentor-program-2nd-ananyu0606.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lidemy/mentor-program-2nd-ananyu0606/issues"
+  },
+  "homepage": "https://github.com/Lidemy/mentor-program-2nd-ananyu0606#readme"
 }
