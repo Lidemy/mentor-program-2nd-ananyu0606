@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="og:title" content="Ann's week4_hw1">
+    <meta name="og:description" content="javascript 計算機">
+    <title>Ann's week4_hw1_a_calculator</title>
+
+    <style type="text/CSS">
+        body{
+            margin: 0;
+        }
+
+        p{
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrapper{
+            font-family: Arial, Helvetica, sans-serif;    
+            display: block;
+            text-align: center;
+            height: 310px;
+            width: 500px;           
+            margin: 10% auto;
+            border: solid 3px rgba(73, 71, 71, 0.774);
+            padding: 10px;
+        }
+
+        .buttonRow{
+            display: block;
+            display: flex;           
+            height: 60px;
+            width: 500px;
+            justify-content: space-between;
+            line-height: 50PX;
+            margin-top: 0.5%;
+            margin-bottom: 0.5%;
+            font-size: 40px;
+        }
+
+        .result{
+            display: inline-block; 
+            border:solid 2.5px rgb(233, 163, 163);            
+            height: 85%;
+            width: 100%;
+            padding:0 20px;
+            text-align: right;            
+        }       
+
+        .button{
+            display: inline-block;
+            border: solid 2px rgba(128, 128, 128, 0.404);
+            height: 50px;
+            width: 18%;
+        }
+
+        .blank{
+            visibility: hidden;          
+        }
+
+        .equal{
+            width: 38.5%;
+            background: rgb(255, 246, 118);
+        }
+
+        .AC{            
+            width: 38.5%;
+            background: rgba(214, 255, 118, 0.938); 
+        }
+
+        .number:hover{
+            background:rgba(250, 142, 20, 0.678);
+            cursor: pointer;
+        }
+
+        .operator:hover{
+            background:rgba(73, 186, 252, 0.644);
+            cursor: pointer;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // 令小數點數目的初始值為 0 
+            let DecimalPoint = 0
+            // 令運算元的初始值為空字串
+            let operand_1 = ''
+            let operand_2 = ''
+            // 令運算元的初始值為空字串
+            let operator = ''
+            // 令運算結果的初始值為 0 
+            let finalResult = 0
+
+            let flag = 0
+            let tempResult = ''
+
+            document.querySelector('.wrapper').addEventListener('click', function (e) {
+                let buttonHit = e.target.id
+                let result = document.querySelector('.result')
+
+
+                // 按到 AC 就歸零
+                if (e.target.innerText === 'AC') {
+                    tempResult = '0'
+                    operand_1 = ''
+                    operand_2 = ''
+                    DecimalPoint = 0
+                    flag = 0
+                }
+
+                // 出現在計算結果的框中的數字
+
+                if (e.target.className === 'button number') {
+                    if (result.innerText === '0') {
+                        tempResult = buttonHit
+                    } else {
+                        if (e.target.innerText === '.') {
+                            DecimalPoint += 1
+                        }
+                        if (DecimalPoint > 1) {
+                            if (e.target.innerText === '.') {
+                                tempResult = tempResult
+                            } else {
+                                tempResult += buttonHit
+                            }
+                        } else {
+                            tempResult += buttonHit
+                            console.log(flag)
+                            // console.log('tempResult=', tempResult)
+                        }
+                    }
+                }
+
+                if (flag === 0) {
+                    console.log('tempResult=', tempResult)
+                    operand_1 = tempResult
+                    console.log('operand_1=', operand_1)
+                    result.innerText = operand_1
+                } else {
+                    operand_2 = tempResult
+                    console.log('operand_2=', operand_2)
+                    result.innerText = operand_2
+                }
+
+                // 按到運算子的同時將前面已經輸入的數字從 string 轉為 float 並暫存為 operand
+                if (e.target.className === 'button operator') {
+                    flag = 1
+                    tempResult = ''
+                    result.innerText = operand_1
+                }
+
+                if (e.target.id === '+') {
+                    console.log('operand_2_parse=', parseFloat(operand_2))
+                    if (operand_2 === '') {
+                        result.innerText = operand_1
+                    } else {
+                        tempResult = parseFloat(operand_1) + parseFloat(operand_2)
+                        result.innerText = tempResult
+                        operand_1 = tempResult
+                        console.log('operand_1_reload=', operand_1)
+                    }
+                }
+                if (e.target.id === '-') {
+                    console.log('operand_2_parse=', parseFloat(operand_2))
+                    if (operand_2 === '') {
+                        result.innerText = operand_1
+                    } else {
+                        tempResult = parseFloat(operand_1) - parseFloat(operand_2)
+                        result.innerText = tempResult
+                        operand_1 = tempResult
+                        console.log('operand_1_reload=', operand_1)
+                    }
+                }
+                if (e.target.id === '*') {
+                    console.log('operand_2_parse=', parseFloat(operand_2))
+                    if (operand_2 === '') {
+                        result.innerText = operand_1
+                    } else {
+                        tempResult = parseFloat(operand_1) * parseFloat(operand_2)
+                        result.innerText = tempResult
+                        operand_1 = tempResult
+                        console.log('operand_1_reload=', operand_1)
+                    }
+                }
+                if (e.target.id === '/') {
+                    console.log('operand_2_parse=', parseFloat(operand_2))
+                    if (operand_2 === '') {
+                        result.innerText = operand_1
+                    } else {
+                        tempResult = parseFloat(operand_1) / parseFloat(operand_2)
+                        result.innerText = tempResult
+                        operand_1 = tempResult
+                        console.log('operand_1_reload=', operand_1)
+                    }
+                }
+
+                if (e.target.id === '=') {
+                    console.log('operand_1_final=', operand_1)
+                    result.innerText = operand_1
+                    tempResult = ''
+                    flag = 0
+                }
+            })
+        })
+
+    </script>
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 顯示結果 -->
+        <div class='buttonRow'>
+            <p class="result"> </p>
+        </div>
+
+        <!-- 7、8、9、AC(佔兩格寬度) -->
+        <div class='buttonRow'>
+            <p id="7" class="button number">7</p>
+            <p id="8" class="button number">8</p>
+            <p id="9" class="button number">9</p>
+            <p class=" button operator AC">AC</p>
+
+        </div>
+
+        <!-- 4、5、6、×、÷ -->
+        <div class='buttonRow'>
+            <p id="4" class="button number">4</p>
+            <p id="5" class="button number">5</p>
+            <p id="6" class="button number">6</p>
+            <p id="*" class="button operator">×</p>
+            <p id="/" class="button operator">÷</p>
+        </div>
+
+        <!-- 1、2、3、＋、－ -->
+        <div class='buttonRow'>
+            <p id="1" class="button number">1</p>
+            <p id="2" class="button number">2</p>
+            <p id="3" class="button number">3</p>
+            <p id="+" class="button operator">+</p>
+            <p id="-" class="button operator">-</p>
+        </div>
+
+        <!-- 0、.、空格、＝ -->
+        <div class='buttonRow'>
+            <p id="0" class="button number">0</p>
+            <p id="." class="button number">.</p>
+            <p class="button blank"> </p>
+            <p id = "=" class="button operator equal">=</p>
+
+        </div>
+
+
+
+
+    </div>
+</body>
+
+</html>
