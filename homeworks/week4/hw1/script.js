@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let temp = '' 
     
+    // 對 parent node 監聽，就可以監聽 parent 底下所有 children nodes 的動作
     document.querySelector('.wrapper').addEventListener('click', function (e) {
         let button_id = e.target.id
         let button_class = e.target.className
@@ -101,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // 不論選取的是 + - * / 或是 = ，都會將前一回合已經取得的 operand_1 跟 operand_2 的運算結果運算出來
         // 暫未能夠處理浮點數計算後會跑出誤差值的問題
         if (operand_1 !== 0 && operand_2 !== 0 && button_class !== 'button number'){
+            // 練習 switch/case 的寫法
             switch (operator){
                 case '+':
                 finalResult = operand_1 + operand_2
