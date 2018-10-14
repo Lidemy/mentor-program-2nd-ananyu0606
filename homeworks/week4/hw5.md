@@ -87,3 +87,4 @@
  - 透過使用 CORS 或 JSONP 方式存取。
  - CORS (Cross-origin resource sharing) 跨來源資源共享，是針對如用戶端透過 Ajax 從 A 網域呼叫 B 網域服務的互動而定義的標準，也屬於 W3C 中推廣的標準之一。如要使用 CORS 的方法主要是透過在 HTTP Header 中加入 Access-Control-Allow-Origin 此回應標頭來讓 client 端檢查，當回應標頭含有 Access-Control-Allow-Origin 時資料將正常顯示，如未包含時，雖然呼叫成功但是資料不會顯示出來。
  - 相較於 CORS 來說，JSONP 只提供 HTTP GET 動詞可以使用，而 CORS 提供了所有 HTTP 動詞且安全性比較高。
+ - Reference：https://dotblogs.com.tw/joysdw12/2013/05/25/web-api-cors
