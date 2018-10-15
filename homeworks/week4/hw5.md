@@ -3,8 +3,7 @@
 ## 1. 什麼是 DOM？
 - DOM 的全名是 document object model ，是由瀏覽器提供、讓程式語言可以操控 html 或 xmll 的 API，也就是說雖然程式以 JavaScript 寫成，但實際是使用 DOM 來存取頁面及其元素，再用 JavaScript 來操縱 DOM
   - 例如 "`var name = document.getElementById("name");`"：
-     - "`var name = document`" 的部分是 JavaScript 
-     - "`.getElementById("name");`" 的部分則是 DOM
+     - 即是用 javascript 取得 HTML 中 id 是 "name" 的 DOM，並將取得的結果存在名為 "name" 的變數中。
 
 - 如果把 html 中的每個元素 tag 都看成一個節點 node，所有的節點集合起來就形成一個 DOM TREE，開發者便可透過標準化的 DOM API 對 DOM TREE 上的任意節點做結構性的存取。
 
