@@ -1,0 +1,207 @@
+.nav{
+    width: 100%;
+    /* display: block; */
+    background: #003049;
+    color: white;
+    /* 固定在網頁的最上方 */
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    /* flex + justify-content: space-between ：使 item 可以左右並排 */
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.nav__list{
+    list-style: none;
+    padding: 0 20px;
+    margin: 10px;
+    display: flex;
+}
+
+.nav__item a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+/* 使右上方的 nav item 之間有間隔 */
+.nav__item + .nav__item{
+    margin-left: 20px;
+}
+
+.container{
+    margin-top: 40px;
+    padding: 20px;
+    display: flex;
+    position: relative;
+    z-index: 0;
+    /* justify-content: space-between; */
+}
+
+.form_wrapper{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.comments_form{
+    display: inline-block;
+    padding: 20px 20px;
+    /* 不論是 text-align margin 皆無法使這個 form 置中，故在 form 外面再加一層 div form_wrapper 來包裹
+    text-align: center
+    margin: 0 auto; */
+    background: #FCC962;
+    border-radius: 5px;
+}
+
+.form_row{
+    text-align: left;
+    padding: 5px 0;
+}
+
+.comments_area{
+    margin-top: 15px;
+}
+
+.form_submit{
+    margin-top: 10px;
+    display: block;
+    text-align: right;
+}
+
+.comment_wrapper{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.page_wrapper{
+    text-align:right;
+    margin-top: 10px;
+}
+
+.page{
+    font-weight: bolder;
+    text-align: center;
+}
+
+.page a{
+    display: inline-block;
+    width: 30px;
+}
+.page a:hover{
+    color: red;
+    background: yellow;
+}
+
+.comment{
+    display: block;
+    width: 400px;
+    padding: 20px 20px;    
+    margin: 0 auto;
+    background: #FCC962;
+    border-radius: 5px;
+    text-align: left;
+    margin-top: 30px;
+    position: relative;
+}
+
+.sub-comments{
+    display: block;
+    width: 350px;
+    padding: 20px 20px;    
+    margin: 0 auto;
+    background: rgb(252, 154, 98);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: antiquewhite;
+    text-align: left;
+    margin-top: 30px;
+    position: relative;
+}
+
+.comment__content{
+    padding: 5px 0px;
+}
+
+.delete-button{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    padding: 3px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+    background:rgba(0, 17, 170, 0.7);
+    color:rgb(255, 255, 255);
+    line-height:15px;
+    text-align:center;
+}
+
+.delete-button:hover{
+    cursor: pointer;
+    background-color: red;
+}
+
+.edit-button{
+    position: absolute;
+    top: 15px;
+    right: 75px;
+    width: 50px;
+    padding: 3px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+    background:rgba(0, 17, 170, 0.7);
+    color:rgb(255, 255, 255);
+    line-height:15px;
+    text-align:center;
+}
+
+.edit-button:hover{
+    cursor: pointer;
+    background-color: aqua;
+    color: black;
+}
+
+.add-comments_form{
+    display: block;
+    width: 350px;
+    padding: 20px 20px;    
+    margin: 0 auto;
+    background: rgb(252, 129, 98);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: antiquewhite;
+    text-align: left;
+    margin-top: 30px;
+}
+
+.add-comments_form > .form_row{
+    text-align: left;
+    padding: 0px 0;
+}
+
+h3{
+    margin-top: 0;
+}
+
+.test{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    color:grey;
+    text-align: right;
+    display: block;
+    width: 100%;
+    background: rgba(128, 128, 128, 0.274);
+}
+
+.test_wrapper{
+    margin: 10px 20px;
+}
