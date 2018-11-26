@@ -3,8 +3,7 @@
 ## 1. 什麼是 DOM？
 - DOM 的全名是 document object model ，是由瀏覽器提供、讓程式語言可以操控 html 或 xmll 的 API，也就是說雖然程式以 JavaScript 寫成，但實際是使用 DOM 來存取頁面及其元素，再用 JavaScript 來操縱 DOM
   - 例如 "`var name = document.getElementById("name");`"：
-     - "`var name = document`" 的部分是 JavaScript 
-     - "`.getElementById("name");`" 的部分則是 DOM
+     - 即是用 javascript 取得 HTML 中 id 是 "name" 的 DOM，並將取得的結果存在名為 "name" 的變數中。
 
 - 如果把 html 中的每個元素 tag 都看成一個節點 node，所有的節點集合起來就形成一個 DOM TREE，開發者便可透過標準化的 DOM API 對 DOM TREE 上的任意節點做結構性的存取。
 
@@ -87,3 +86,4 @@
  - 透過使用 CORS 或 JSONP 方式存取。
  - CORS (Cross-origin resource sharing) 跨來源資源共享，是針對如用戶端透過 Ajax 從 A 網域呼叫 B 網域服務的互動而定義的標準，也屬於 W3C 中推廣的標準之一。如要使用 CORS 的方法主要是透過在 HTTP Header 中加入 Access-Control-Allow-Origin 此回應標頭來讓 client 端檢查，當回應標頭含有 Access-Control-Allow-Origin 時資料將正常顯示，如未包含時，雖然呼叫成功但是資料不會顯示出來。
  - 相較於 CORS 來說，JSONP 只提供 HTTP GET 動詞可以使用，而 CORS 提供了所有 HTTP 動詞且安全性比較高。
+ - Reference：https://dotblogs.com.tw/joysdw12/2013/05/25/web-api-cors

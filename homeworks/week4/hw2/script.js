@@ -37,16 +37,23 @@ document.addEventListener('DOMContentLoaded', function () {
             radiocheck.parentNode.children[3].innerHTML = '這是必填問題'
             e.preventDefault()
         }
-       
-        // 在字串尾端加上 '\n' 就可以讓 alert 的訊息換行
-        alert(
-            '電子郵件地址 : '+ email.value + '\n' + 
-            '暱稱 : '+ nickname.value+'\n' +
-            '報名類型 : '+ type+'\n' +
-            '現在的職業 : '+ job.value+'\n' +
-            '是否有程式相關背景: '+ experience.value+'\n' +
-            '其他 : '+ othercomments.value
-        )
+
+        if (email.value !== '' &&
+        nickname.value !== '' &&
+        job.value !== '' &&
+        experience.value !== ''&&
+        type !== '') {
+            // 在字串尾端加上 '\n' 就可以讓 alert 的訊息換行
+            alert(
+                '電子郵件地址 : ' + email.value + '\n' +
+                '暱稱 : ' + nickname.value + '\n' +
+                '報名類型 : ' + type + '\n' +
+                '現在的職業 : ' + job.value + '\n' +
+                '是否有程式相關背景: ' + experience.value + '\n' +
+                '其他 : ' + othercomments.value
+            )
+        }
+
 
     })
 })
