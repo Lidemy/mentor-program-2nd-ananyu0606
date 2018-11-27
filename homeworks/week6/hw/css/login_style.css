@@ -1,0 +1,115 @@
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    /* 將預設字體改為思源黑體 */
+    margin: 0;
+}
+
+
+.welcome_message{
+    display: block;
+    width: 500px;
+    height: 50px;
+    line-height: 50px;
+    margin: 50px auto;
+    text-align: center;
+    border-radius: 10px;
+    color: grey;
+    font-size: 20px;
+}
+
+.login{
+    display: flex;    
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.loginblock {
+    display: inline-block;
+    width: 250px;
+    background:rgba(0, 170, 144, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.loginblock_title{
+    width: 180px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.wrapper{
+    width: 180px;
+    margin: 0 auto;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: grey;
+}
+
+.input{
+    margin: 10px 10px;
+}
+
+
+.submit{
+    margin: 10px 10px;
+    height: 20px;
+    position:relative;    
+}
+
+.login_submit{
+    position: absolute;
+    right: 0px;
+}
+
+.logged_in{
+    display: flex;    
+    justify-content: space-between;
+    display: block;
+    width: 100%;
+}
+
+.logged_in{
+    display: flex;    
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.logged_in_button{
+    display: inline-block;
+    width: 200px;
+    height: 150px;
+    background:rgba(0, 170, 144, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    color:grey;
+    text-align: center;
+    font-size: 30px;
+    border-style: none;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.logged_in_button:hover{
+    cursor: pointer;
+    color: #B54434;
+    font-weight: bolder;
+}
+
+.test{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color:grey;
+    text-align: right;
+    display: block;
+    width: 100%;
+    background: rgba(128, 128, 128, 0.274);
+}
+
+.test_wrapper{
+    margin: 10px 20px;
+}
+
+
