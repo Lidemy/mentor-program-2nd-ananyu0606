@@ -1,4 +1,7 @@
 <?php 
+if (!isset($_SESSION)){
+    session_start();
+}
 include_once("./template/utils.php");
 include_once("./template/conn.php")
 
@@ -16,7 +19,7 @@ include_once("./template/conn.php")
             <span>
                 <?php
                 echo "哈囉，";
-                echo fetch_name($conn, "username");
+                echo $_SESSION['username'];
                 echo " (";
                 echo fetch_name($conn, "nickname");
                 echo ") ";
@@ -24,7 +27,7 @@ include_once("./template/conn.php")
             </span>
         </li>
         <li class="nav__item">
-            <a href="./clear_cookie.php">登出</a>
+            <a href="./unset_session.php">登出</a>
         </li>
     </ul>
 </nav>

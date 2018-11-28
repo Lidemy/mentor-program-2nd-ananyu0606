@@ -1,4 +1,7 @@
 <?php
+    if (!isset($_SESSION)){
+        session_start();
+    }
     include_once('./template/utils.php');
     include_once('./template/conn.php');
 ?>
@@ -22,9 +25,9 @@
     <div class="welcome_message">
         <div class="cookie_set">
             <?php
-                if (isset($_COOKIE['token'])) {
-                    echo fetch_name($conn, "nickname");
+                if (isset($_SESSION['username'])) {
                     echo "你好，歡迎回來！";
+                    echo $_SESSION['username'];
                 } 
                 else {
             ?>
@@ -32,7 +35,7 @@
         <div class="<?php echo "no_cookie"; ?>">
             <div>
                 <?php 
-                echo "親愛的訪客您好，請先登入或註冊 </br>(v2 加強會員系統安全、兩層留言板)";
+                echo "親愛的訪客您好，請先登入或註冊 </br>(v3 加入 session 機制、防止 SQL injection)";
             } 
             ?>
             </div>
@@ -86,7 +89,7 @@
             </form>
         </div>
         <div class="logout">
-            <form action="clear_cookie.php">
+            <form action="./unset_session.php">
                 <button class="logged_in_button" type="submit">登出</button>
             </form>
         </div>

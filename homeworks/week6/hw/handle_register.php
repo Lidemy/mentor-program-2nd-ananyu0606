@@ -1,7 +1,7 @@
 <?php
-
-// echo "welcome to register page<br>";
-
+if (!isset($_SESSION)){
+    session_start();
+}
 include_once('./template/conn.php');
 include_once('./template/utils.php');
 
@@ -14,7 +14,7 @@ if (isset($_POST['username']) &&
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     // PASSWORD_DEFAULT - Use the bcrypt algorithm (default as of PHP 5.5.0). Note that this constant is designed to change over time as new and stronger algorithms are added to PHP. For that reason, the length of the result from using this identifier can change over time. Therefore, it is recommended to store the result in a database column that can expand beyond 60 characters (255 characters would be a good choice).
-    $nickname = $_POST['nickname'];
+    $nickname = $_POST['nickname']; 
 
     $duplicate_flag = true;  //檢查帳號是否已經存在(false 表示已有相同帳號)
 
@@ -34,7 +34,8 @@ if (isset($_POST['username']) &&
         $sql = 'INSERT INTO ann_users (username, password, nickname) VALUES ("' . $username . '", "' . $password . '", "' . $nickname . '")';
         if ($conn->query($sql) === true) {
             echo "歡迎加入";
-            set_token($conn, $username);
+            // set_token($conn, $username);
+            $_SESSION['username']= $username;
             header("Location:./login.php");
         } else {
             echo "error message: " . $conn->error;

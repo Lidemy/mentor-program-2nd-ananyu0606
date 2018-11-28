@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)){
+    session_start();
+}
 include_once("./template/conn.php");
 include_once("./template/utils.php");
 ?>
@@ -16,7 +19,7 @@ include_once("./template/utils.php");
 <body>
 
 <?php
-    if (!isset($_COOKIE['token'])) {
+    if (!isset($_SESSION['username'])) {
         echo "請先登入";
         header("Location: login.php");
     }

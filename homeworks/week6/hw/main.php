@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)){
+    session_start();
+}
 include_once("./template/conn.php");
 include_once("./template/utils.php");
 ?>
@@ -11,12 +14,12 @@ include_once("./template/utils.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="./css/main_style.css">
-    <title>來留言吧 v2</title>
+    <title>來留言吧 v3</title>
 </head>
 
 <body>
     <?php
-    if (!isset($_COOKIE['token'])) {
+    if (!isset($_SESSION['username'])) {
         echo "請先登入";
         header("Location: login.php");
     }
@@ -31,7 +34,7 @@ include_once("./template/utils.php");
                     <input type="hidden" value="0" name="parent_id">
                     <div class="form_row">
                         留言人：
-                        <?php echo fetch_name($conn, "username"); ?>
+                        <?php echo $_SESSION['username']; ?>
                     </div>
                     <div class="form_row">
                         暱稱：

@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)){
+    session_start();
+}
 include_once('./template/conn.php');
 include_once('./template/utils.php');
 
@@ -13,7 +16,9 @@ if ($result->num_rows > 0) {
         $hash_password = $row['password'];
         // 以 password_verify 比對使用者輸入的密碼以及從資料庫中提取出來的 hash 密碼，如果比對成功就設定 cookie
         if (password_verify($password, $hash_password)){
-            set_token($conn, $username);
+            // set_token($conn, $username);
+            $_SESSION['username'] = $username;
+            echo $_SESSION['username'];
             echo '登入成功！<br>';
             // header("Location: ./login.php");
         }else{

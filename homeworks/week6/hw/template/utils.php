@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION)){
+    session_start();
+}
+include_once("conn.php");
 function set_token($conn, $username)
 {
     $token = uniqid();
@@ -22,14 +26,10 @@ function set_token($conn, $username)
 
 function fetch_name($conn, $a){
 
-    if (isset($_COOKIE['token'])) {
-        $token_cookie = $_COOKIE['token'];
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
 
-        $sql = "SELECT c.token, c.username, u.username, u.nickname 
-        FROM ann_certificates as c 
-        LEFT JOIN ann_users as u 
-        ON c.username = u.username 
-        WHERE c.token = '$token_cookie'";
+        $sql = "SELECT * FROM ann_users WHERE username = '$username'";
 
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -45,6 +45,7 @@ function fetch_name($conn, $a){
         echo "使用者未登入";
     }    
 }
+// fetch_name($conn, 'nickname');
 
 function render_edit_button($conn, $username, $id){
     $fetch_name = fetch_name($conn, "username");
