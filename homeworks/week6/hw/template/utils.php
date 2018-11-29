@@ -23,6 +23,9 @@ function set_token($conn, $username)
     setcookie("token", $token, time() + 3600 * 24);
 }
 
+function escape($str){
+    return htmlspecialchars($str, ENT_QUOTES, 'utf-8');
+}
 
 function fetch_name($conn, $a){
 

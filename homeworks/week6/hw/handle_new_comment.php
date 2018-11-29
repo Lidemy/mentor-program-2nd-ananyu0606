@@ -13,7 +13,6 @@ if (isset($_POST["new_comment"]) && empty($_POST["new_comment"])){
     $comment = $_POST["new_comment"];
     $parent_id = $_POST["parent_id"];
     
-    // 暫時 ok 的寫法：但是還沒處理 sql injection 的問題，還沒導入 prepared statement 的處理，comment 的內容不能有 ' 單引號
     $sql = "INSERT INTO ann_comments (parent_id, username, content) VALUES ('$parent_id', '$username', '$comment')";
     
     // sql debug 用

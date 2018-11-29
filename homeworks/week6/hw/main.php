@@ -38,7 +38,7 @@ include_once("./template/utils.php");
                     </div>
                     <div class="form_row">
                         暱稱：
-                        <?php echo fetch_name($conn, "nickname"); ?>
+                        <?php echo escape(fetch_name($conn, "nickname")); ?>
                     </div>
                     <textarea class="comments_area" cols="60" placeholder="請輸入留言" name="new_comment"></textarea>
                     <div class="form_submit">
@@ -107,14 +107,14 @@ include_once("./template/utils.php");
                     ?>
 
                     <div class="comment__author"><?php echo  $total_counts - (($page-1) * $counts_per_page + $message_count += 1); echo" 樓";?>作者：
-                        <?php echo $row['nickname'];
+                        <?php echo escape($row['nickname']);
                               ?>
                     </div>
                     <div class="comment__time">時間：
                         <?php echo $row['created_at']; ?>
                     </div>
                     <div class="comment__content">留言內容：
-                        <?php echo "<br>" . $row['content']; ?>
+                        <?php echo "<br>" . escape($row['content']); ?>
                     </div>
     
                     <?php
@@ -137,13 +137,13 @@ include_once("./template/utils.php");
                         render_edit_button($conn, $username, $id);
                         ?>
                         <div class="comment__author">作者：
-                            <?php echo $sub_row['nickname']; ?>
+                            <?php echo escape($sub_row['nickname']); ?>
                         </div>
                         <div class="comment__time">時間：
                             <?php echo $sub_row['created_at']; ?>
                         </div>
                         <div class="comment__content">留言內容：
-                            <?php echo "<br>" . $sub_row['content']; ?>
+                            <?php echo "<br>" . escape($sub_row['content']); ?>
                         </div>
                     </div>
     
@@ -163,7 +163,7 @@ include_once("./template/utils.php");
                                 </div>
                                 <div class="form_row">
                                     暱稱：
-                                    <?php echo fetch_name($conn, "nickname"); ?>
+                                    <?php echo escape(fetch_name($conn, "nickname")); ?>
                                 </div>
                                 <textarea class="comments_area" cols="40" placeholder="請輸入留言" name="new_comment"></textarea>
                                 <div class="form_submit">

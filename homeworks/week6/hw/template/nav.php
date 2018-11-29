@@ -21,7 +21,7 @@ include_once("./template/conn.php")
                 echo "哈囉，";
                 echo $_SESSION['username'];
                 echo " (";
-                echo fetch_name($conn, "nickname");
+                echo escape(fetch_name($conn, "nickname"));
                 echo ") ";
                 ?>
             </span>

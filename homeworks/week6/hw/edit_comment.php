@@ -43,7 +43,7 @@ include_once("./template/utils.php");
                     </div>
                     <div class="form_row">
                         暱稱：
-                        <?php echo fetch_name($conn, "nickname"); ?>
+                        <?php echo escape(fetch_name($conn, "nickname")); ?>
                     </div>
                     <textarea class="comments_area" cols="60" placeholder="請輸入留言" name="edited_comment"><?php echo $row['content'];?></textarea>
                     <div class="form_submit">
