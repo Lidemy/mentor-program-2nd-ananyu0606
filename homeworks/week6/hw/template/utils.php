@@ -3,25 +3,25 @@ if (!isset($_SESSION)){
     session_start();
 }
 include_once("conn.php");
-function set_token($conn, $username)
-{
-    $token = uniqid();
-    // 刪除前次登入建立的 token
-    $sql = "DELETE FROM ann_certificates WHERE username = '$username'";
-    $conn->query($sql);
-    // echo "step1:" . $sql;    
+// function set_token($conn, $username)
+// {
+//     $token = uniqid();
+//     // 刪除前次登入建立的 token
+//     $sql = "DELETE FROM ann_certificates WHERE username = '$username'";
+//     $conn->query($sql);
+//     // echo "step1:" . $sql;    
 
-    $sql = "INSERT INTO ann_certificates(username, token) VALUE('$username', '$token')";
-    // echo "step2:" . $sql;    
+//     $sql = "INSERT INTO ann_certificates(username, token) VALUE('$username', '$token')";
+//     // echo "step2:" . $sql;    
     
-    if ($conn->query($sql) === true) {
-        // echo "登入成功";
-        header("Location: ./login.php");
-    } else {
-        echo "error message: " . $conn->error;
-    }
-    setcookie("token", $token, time() + 3600 * 24);
-}
+//     if ($conn->query($sql) === true) {
+//         // echo "登入成功";
+//         header("Location: ./login.php");
+//     } else {
+//         echo "error message: " . $conn->error;
+//     }
+//     setcookie("token", $token, time() + 3600 * 24);
+// }
 
 function escape($str){
     return htmlspecialchars($str, ENT_QUOTES, 'utf-8');

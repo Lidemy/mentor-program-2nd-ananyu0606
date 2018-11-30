@@ -1,6 +1,6 @@
 <?php
 // echo "welcome to the message processor <br>";
-
+include_once("./template/check_login.php");
 include_once("./template/conn.php");
 include_once("./template/utils.php");
 
@@ -9,7 +9,7 @@ if (isset($_POST["new_comment"]) && empty($_POST["new_comment"])){
     echo "<script>alert('請輸入留言'); window.location='./main.php'</script>";
     // echo "空字串"; 
 } else{
-    $username = fetch_name($conn, "username");
+    $username = $_SESSION["username"];
     $comment = $_POST["new_comment"];
     $parent_id = $_POST["parent_id"];
     

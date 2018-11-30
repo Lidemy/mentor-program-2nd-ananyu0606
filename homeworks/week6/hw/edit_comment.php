@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION)){
-    session_start();
-}
+include_once("./template/check_login.php");
 include_once("./template/conn.php");
 include_once("./template/utils.php");
 ?>
@@ -28,9 +26,10 @@ include_once("./template/utils.php");
     include_once("./template/nav.php");
     $comment_id = $_GET["comment_id"];    
     
-    $sql = "SELECT * FROM ann_comments WHERE id= $comment_id";
+    $sql = "SELECT * FROM ann_comments WHERE id= $comment_id AND username = '$username'";
     $result = $conn->query($sql);
-    $row = $result->fetch_assoc();    
+    $row = $result->fetch_assoc();
+    $page = $_COOKIE["page"];     
     
     ?>
     <div class="container">
@@ -39,7 +38,7 @@ include_once("./template/utils.php");
                     <input type="hidden" value=<?php echo $comment_id ?> name="comment_id">
                     <div class="form_row">
                     留言人：
-                        <?php echo fetch_name($conn, "username"); ?>
+                        <?php echo $username; ?>
                     </div>
                     <div class="form_row">
                         暱稱：
@@ -49,8 +48,8 @@ include_once("./template/utils.php");
                     <div class="form_submit">
                         <button type="submit" class="submit_button">送出</button>
                     </div>
-                </form>
-                <form action="./main.php" style="position: relative;">
+                </form>                
+                <form action="./main.php"  style="position: relative;">
                     <button type="submit" style="position: absolute; top: 5px; right: 3px;">放棄編輯</button>
                 </form>
             </div>

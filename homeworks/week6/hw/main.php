@@ -1,9 +1,7 @@
 <?php
-if (!isset($_SESSION)){
-    session_start();
-}
-include_once("./template/conn.php");
-include_once("./template/utils.php");
+require("./template/check_login.php");
+require_once("./template/conn.php");
+require_once("./template/utils.php");
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +23,7 @@ include_once("./template/utils.php");
     }
     ?>
     <?php 
-    include_once("./template/nav.php");
+    include("./template/nav.php");
     ?>
     <div class="container">
         <div class="left">
@@ -34,7 +32,7 @@ include_once("./template/utils.php");
                     <input type="hidden" value="0" name="parent_id">
                     <div class="form_row">
                         留言人：
-                        <?php echo $_SESSION['username']; ?>
+                        <?php echo $username; ?>
                     </div>
                     <div class="form_row">
                         暱稱：
@@ -68,10 +66,11 @@ include_once("./template/utils.php");
                 }
                 if (isset($_GET['page']) && !empty($_GET['page'])){
                     $page = $_GET['page'];
-                    $page_cookie = setcookie("page", $page);
                 }else {
                     $page = 1;
-                }?>
+                }
+                $page_cookie = setcookie("page", $page);
+                ?>
                 頁 (每頁顯示 <?php echo  $counts_per_page;?> 筆留言)  
             </div>
         </div>
