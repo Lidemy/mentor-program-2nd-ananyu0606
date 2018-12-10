@@ -96,7 +96,7 @@
     </div>
 
 
-    <div class="test">
+    <!-- <div class="test">
         <div class="test_wrapper">
             <div>測試區</div>
             <form action="./template/set_to_zero.php" method="GET">
@@ -107,7 +107,7 @@
             </form>
         
         </div>
-    </div>
+    </div> -->
 
 
 </body>

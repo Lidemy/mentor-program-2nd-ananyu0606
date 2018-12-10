@@ -3,6 +3,8 @@ if (!isset($_SESSION)){
     session_start();
 }
 include_once("conn.php");
+
+// 使用 php 內建的 session 功能就可以取代用以下這個方式建立的 token id
 // function set_token($conn, $username)
 // {
 //     $token = uniqid();
@@ -10,10 +12,8 @@ include_once("conn.php");
 //     $sql = "DELETE FROM ann_certificates WHERE username = '$username'";
 //     $conn->query($sql);
 //     // echo "step1:" . $sql;    
-
 //     $sql = "INSERT INTO ann_certificates(username, token) VALUE('$username', '$token')";
-//     // echo "step2:" . $sql;    
-    
+//     // echo "step2:" . $sql;        
 //     if ($conn->query($sql) === true) {
 //         // echo "登入成功";
 //         header("Location: ./login.php");
@@ -23,18 +23,48 @@ include_once("conn.php");
 //     setcookie("token", $token, time() + 3600 * 24);
 // }
 
+// 跳脫特殊字元，避免 XXS 攻擊
 function escape($str){
     return htmlspecialchars($str, ENT_QUOTES, 'utf-8');
 }
 
+// function fetch_name($conn, $a){
+
+//     if (isset($_SESSION['username'])) {
+//         $username = $_SESSION['username'];
+//         $sql = "SELECT * FROM ann_users WHERE username = '$username'";
+//         $result = $conn->query($sql);
+//         if ($result->num_rows > 0) {
+//             while ($row = $result->fetch_assoc()){
+//                 // echo $row[$a];
+//                 return $row[$a];
+//             }
+//         } else {
+//             echo 'login result: <br>';
+//             echo '帳號不存在或密碼錯誤';
+//         }
+//     } else {
+//         echo "使用者未登入";
+//     }    
+// }
+
+// using prepare statement
 function fetch_name($conn, $a){
 
     if (isset($_SESSION['username'])) {
+        
+        // prepare and bind
+        $sql = "SELECT * FROM ann_users WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $username);
+        
+        // set parameters
         $username = $_SESSION['username'];
-
-        $sql = "SELECT * FROM ann_users WHERE username = '$username'";
-
-        $result = $conn->query($sql);
+        
+        // execute
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()){
                 // echo $row[$a];

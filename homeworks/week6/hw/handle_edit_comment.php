@@ -1,6 +1,6 @@
 <?php
 include_once("./template/conn.php");
-include_once("./template/check_login.php")
+include_once("./template/check_login.php");
 
 $comment_id = $_POST["comment_id"];
 $edited_comment = $_POST["edited_comment"];
@@ -14,11 +14,21 @@ if (isset($_POST["edited_comment"]) && empty($_POST["edited_comment"])) {
     
 } else {
 
-    $sql = "UPDATE ann_comments SET content = '$edited_comment' WHERE id = $comment_id AND username = '$username'";
-// echo $sql;
+    // $sql = "UPDATE ann_comments SET content = '$edited_comment' WHERE id = $comment_id AND username = '$username'";
+    // if ($conn->query($sql) === true) {
+    //     // echo $page;
+    //     echo "<script>alert('留言修改成功'); window.location='./main.php?page=" .$page. "'</script>";
+    // } else {
+    //     echo $conn->error;
+    // }
+    
+    // prepare statement
+    $sql = "UPDATE ann_comments SET content = ?  WHERE id = ? AND username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sis',$edited_comment, $comment_id, $username);
+    $status = $stmt->execute();
 
-    if ($conn->query($sql) === true) {
-        // echo $page;
+    if ($status === true) {
         echo "<script>alert('留言修改成功'); window.location='./main.php?page=" .$page. "'</script>";
     } else {
         echo $conn->error;

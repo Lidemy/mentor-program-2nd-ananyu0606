@@ -26,9 +26,18 @@ include_once("./template/utils.php");
     include_once("./template/nav.php");
     $comment_id = $_GET["comment_id"];    
     
-    $sql = "SELECT * FROM ann_comments WHERE id= $comment_id AND username = '$username'";
-    $result = $conn->query($sql);
+    // $sql = "SELECT * FROM ann_comments WHERE id= $comment_id AND username = '$username'";
+    // $result = $conn->query($sql);
+    // $row = $result->fetch_assoc();
+
+    // prepare statement
+    $sql = "SELECT * FROM ann_comments WHERE id= ? AND username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('is', $comment_id, $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $row = $result->fetch_assoc();
+
     $page = $_COOKIE["page"];     
     
     ?>

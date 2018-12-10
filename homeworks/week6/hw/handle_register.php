@@ -31,12 +31,20 @@ if (isset($_POST['username']) &&
     }
 
     if ($duplicate_flag) {
-        $sql = 'INSERT INTO ann_users (username, password, nickname) VALUES ("' . $username . '", "' . $password . '", "' . $nickname . '")';
-        if ($conn->query($sql) === true) {
+        // $sql = "INSERT INTO ann_users (username, password, nickname) VALUES ( $username, $password, $nickname)";
+        // if ($conn->query($sql) === true) {
+        
+        // prepare statement
+        $sql = "INSERT INTO ann_users (username, password, nickname) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('sss', $username, $password, $nickname);
+        $status = $stmt->execute();
+
+        if ($status === true) {
             echo "歡迎加入";
             // set_token($conn, $username);
             $_SESSION['username']= $username;
-            header("Location:./login.php");
+            header("Location:./main.php");
         } else {
             echo "error message: " . $conn->error;
         }

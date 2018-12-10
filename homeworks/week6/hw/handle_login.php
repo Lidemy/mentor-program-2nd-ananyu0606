@@ -8,8 +8,16 @@ include_once('./template/utils.php');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM ann_users WHERE username = '$username'";
-$result = $conn->query($sql);
+// $sql = "SELECT * FROM ann_users WHERE username = '$username'";
+// $result = $conn->query($sql);
+
+// prepare statement
+$sql = "SELECT * FROM ann_users WHERE username = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$result = $stmt->get_result();
+
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // 從資料庫中將 hash 過的密碼提取出來
@@ -18,9 +26,9 @@ if ($result->num_rows > 0) {
         if (password_verify($password, $hash_password)){
             // set_token($conn, $username);
             $_SESSION['username'] = $username;
-            echo $_SESSION['username'];
+            echo escape($_SESSION['username']);
             echo '登入成功！<br>';
-            // header("Location: ./login.php");
+            header("Location: ./main.php");
         }else{
             echo 'login result: <br>';
             echo '帳號不存在或密碼錯誤';

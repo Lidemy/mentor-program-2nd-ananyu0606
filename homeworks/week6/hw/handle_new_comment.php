@@ -13,13 +13,16 @@ if (isset($_POST["new_comment"]) && empty($_POST["new_comment"])){
     $comment = $_POST["new_comment"];
     $parent_id = $_POST["parent_id"];
     
-    $sql = "INSERT INTO ann_comments (parent_id, username, content) VALUES ('$parent_id', '$username', '$comment')";
+    // $sql = "INSERT INTO ann_comments (parent_id, username, content) VALUES ('$parent_id', '$username', '$comment')";  
+    // if ($conn->query($sql) === true) {
     
-    // sql debug 用
-    // echo $sql;
-    // echo $conn->query($sql);
+    // prepare statemen
+    $sql = "INSERT INTO ann_comments (parent_id, username, content) VALUES (? ,? ,? )";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('iss', $parent_id, $username, $comment);
+    $status = $stmt->execute();
     
-    if ($conn->query($sql) === true) {
+    if ($status === true) {
         echo "<script>alert('留言新增成功');</script>"; 
         
         if ($parent_id == 0){

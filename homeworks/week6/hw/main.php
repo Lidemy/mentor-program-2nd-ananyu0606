@@ -32,7 +32,7 @@ require_once("./template/utils.php");
                     <input type="hidden" value="0" name="parent_id">
                     <div class="form_row">
                         留言人：
-                        <?php echo $username; ?>
+                        <?php echo escape($username); ?>
                     </div>
                     <div class="form_row">
                         暱稱：
@@ -158,7 +158,7 @@ require_once("./template/utils.php");
                                 <input type="hidden" value="<?php echo $parent_id; ?>" name="parent_id">
                                 <div class="form_row">
                                     留言人：
-                                    <?php echo fetch_name($conn, "username"); ?>
+                                    <?php echo escape(fetch_name($conn, "username")); ?>
                                 </div>
                                 <div class="form_row">
                                     暱稱：
@@ -180,14 +180,14 @@ require_once("./template/utils.php");
         </div>
     </div>    
 
-    <div class="test">
+    <!-- <div class="test">
         <div class="test_wrapper">
             <div>測試區</div>
             <form action="./template/set_to_zero.php" method="GET">
                 <input type="submit" value="將留言資料清空並歸零" name="comment_set_to_zero">
             </form>
         </div>
-    </div>
+    </div> -->
 
 </body>
 
