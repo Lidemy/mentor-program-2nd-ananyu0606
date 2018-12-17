@@ -1,0 +1,1 @@
+1. 以 php 內建 SESSION 取代 uniqid() 實作的 session，作為判斷使用者是否已經登入的依據。

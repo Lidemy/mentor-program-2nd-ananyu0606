@@ -1,3 +1,4 @@
 node_modules/
 .vscode
-./homeworks/week5/hw2/template/conn.php
+homeworks/week5/hw2/template/conn.php
+homeworks/week6/hw/template/conn.php
